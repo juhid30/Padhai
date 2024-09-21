@@ -43,6 +43,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     // Clear role from local storage
     localStorage.removeItem("userRole");
+
     // Navigate to home
     navigate("/");
     window.location.reload();
