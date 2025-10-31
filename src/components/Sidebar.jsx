@@ -39,28 +39,28 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white w-64 p-5">
+    <div className="min-h-screen bg-emerald-900 text-white w-64 p-5 flex flex-col shadow-2xl">
       {/* Logo and User Info */}
-      <div className="flex items-center mb-10">
-        <div className="bg-purple-600 p-3 rounded-lg">
-          <span className="text-2xl font-bold">CL</span>
+      <div className="flex items-center mb-10 mt-4">
+        <div className="bg-emerald-500 p-3 rounded-xl shadow-lg hover:shadow-emerald-400/30 transition-all duration-300">
+          <span className="text-2xl font-bold text-white">CL</span>
         </div>
         <div className="ml-4">
-          <h2 className="text-lg font-semibold">Codinglab</h2>
-          <p className="text-sm text-gray-400">Web developer</p>
+          <h2 className="text-lg font-semibold text-mint-green">Codinglab</h2>
+          <p className="text-sm text-emerald-200 font-medium">Web developer</p>
         </div>
       </div>
 
       {/* Navigation Links */}
-      <nav className="space-y-4">
+      <nav className="space-y-3 flex-1">
         <ul>
           {routes.map((route) => (
             <li key={route.path}>
               <button
                 onClick={() => navigate(route.path)}
-                className="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 w-full text-left mt-3"
+                className="flex items-center space-x-2 p-3 bg-shamrock-green rounded-xl hover:bg-emerald-600 w-full text-left mt-2 transition-all duration-200 hover:translate-x-1 hover:shadow-lg border border-emerald-700 hover:border-emerald-400 group"
               >
-                <span>{route.name}</span>
+                <span className="text-emerald-50 font-medium group-hover:text-white">{route.name}</span>
               </button>
             </li>
           ))}
@@ -71,9 +71,9 @@ const Sidebar = () => {
       <div className="mt-auto pt-6">
         <button
           onClick={handleLogout}
-          className="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 w-full text-left"
+          className="flex items-center space-x-2 p-3 bg-emerald-800 rounded-xl hover:bg-emerald-700 w-full text-left transition-all duration-200 hover:shadow-lg border border-emerald-700 hover:border-emerald-400 group"
         >
-          <span>Logout</span>
+          <span className="text-emerald-100 font-medium group-hover:text-white">Logout</span>
         </button>
       </div>
     </div>

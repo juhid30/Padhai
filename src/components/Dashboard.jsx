@@ -63,9 +63,15 @@ const Dashboard = () => {
         label: "Attendance (%)",
         data: [80, 85, 90, 95],
         fill: true,
-        backgroundColor: "rgba(153, 102, 255, 0.2)",
-        borderColor: "rgba(153, 102, 255, 1)",
-        borderWidth: 2,
+        backgroundColor: "rgba(16, 185, 129, 0.15)",
+        borderColor: "rgba(5, 150, 105, 1)",
+        borderWidth: 3,
+        tension: 0.4,
+        pointBackgroundColor: "#10b981",
+        pointBorderColor: "#fff",
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7,
       },
     ],
   };
@@ -75,8 +81,9 @@ const Dashboard = () => {
     datasets: [
       {
         data: [ATSRating, 100 - ATSRating],
-        backgroundColor: ["#9F7AEA", "#E9D8FD"],
-        hoverBackgroundColor: ["#9F7AEA", "#E9D8FD"],
+        backgroundColor: ["#10b981", "#d1fae5"],
+        hoverBackgroundColor: ["#059669", "#a7f3d0"],
+        borderWidth: 0,
       },
     ],
   };
@@ -84,6 +91,35 @@ const Dashboard = () => {
   const attendanceOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: "#064e3b",
+          font: {
+            size: 13,
+            weight: "500",
+          },
+        },
+      },
+    },
+    scales: {
+      y: {
+        grid: {
+          color: "rgba(16, 185, 129, 0.1)",
+        },
+        ticks: {
+          color: "#059669",
+        },
+      },
+      x: {
+        grid: {
+          color: "rgba(16, 185, 129, 0.1)",
+        },
+        ticks: {
+          color: "#059669",
+        },
+      },
+    },
   };
   const handleHRSimulatorClick = () => {
     navigate("/hr"); // Redirect to /hr when the div is clicked
@@ -91,47 +127,49 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      <div className="flex-1 bg-purple-50 p-6">
-        <h1 className="text-3xl font-semibold mb-6 text-purple-700">
+      <div className="flex-1 bg-gradient-to-br from-emerald-50 via-mint-50 to-green-50 p-6 min-h-screen">
+        <h1 className="text-4xl font-bold mb-8 text-emerald-800 tracking-tight">
           Dashboard
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-md overflow-hidden h-[400px]">
-            <h2 className="text-lg font-semibold mb-4 text-purple-700">
+          <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-emerald-100 overflow-hidden h-[400px]">
+            <h2 className="text-xl font-semibold mb-4 text-emerald-700 flex items-center">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
               Assignments
             </h2>
             <div className="overflow-hidden h-full">
               <AssignmentSubmission />
             </div>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4 text-purple-700">
+          <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-emerald-100">
+            <h2 className="text-xl font-semibold mb-4 text-emerald-700 flex items-center">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
               Attendance
             </h2>
             <div className="h-48">
               <Line data={attendanceData} options={attendanceOptions} />
             </div>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4 text-purple-700">
+          <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-emerald-100">
+            <h2 className="text-xl font-semibold mb-4 text-emerald-700 flex items-center">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></span>
               Resume
             </h2>
             <Doughnut data={resumeData} />
           </div>
         </div>
         <div className="flex h-[55vh] gap-6 mt-6">
-          <div className="bg-white p-6 h-full w-[70%] rounded-lg shadow-md">
+          <div className="bg-white/90 backdrop-blur-sm p-6 h-full w-[70%] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-emerald-100">
             <CalendarComponent />
           </div>
           <div
-            className="bg-white p-6 w-[30%] rounded-lg shadow-md flex items-center justify-center cursor-pointer"
-            onClick={handleHRSimulatorClick} // Add click handler here
+            className="bg-gradient-to-br from-emerald-50 to-mint-100 p-6 w-[30%] rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-emerald-200 flex items-center justify-center cursor-pointer group"
+            onClick={handleHRSimulatorClick}
           >
-            {" "}
             <img
               src={`https://firebasestorage.googleapis.com/v0/b/webcade2024.appspot.com/o/hr-sim.png?alt=media&token=a753ade0-891c-4352-954d-18c5362df112`}
               alt=""
-              className="flex items-center justify-center h-[250px] w-[250px]"
+              className="flex items-center justify-center h-[250px] w-[250px] group-hover:scale-110 transition-transform duration-300"
             />
           </div>
         </div>

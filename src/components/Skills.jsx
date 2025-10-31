@@ -5,9 +5,9 @@ import { topics } from "../assets/quizData";
 const Skill = ({ name, x, y, onClick, isClicked }) => {
   return (
     <motion.div
-      className={`flex items-center justify-center rounded-full font-semibold py-3 px-6 shadow-dark cursor-pointer absolute
-        lg:py-2 lg:px-4 md:text-sm md:py-1.5 md:px-3 xs:bg-transparent xs:text-dark xs:font-bold
-        ${isClicked ? "bg-green-500 text-light" : "bg-red-500 text-light"}`}
+      className={`flex items-center justify-center rounded-full font-semibold py-3 px-6 shadow-lg cursor-pointer absolute
+        lg:py-2 lg:px-4 md:text-sm md:py-1.5 md:px-3 xs:bg-transparent xs:font-bold
+        ${isClicked ? "bg-gradient-to-r from-emerald-500 to-green-600 text-white" : "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 border-2 border-emerald-200"}`}
       whileHover={{ scale: 1.05 }}
       initial={{ x: 0, y: 0 }}
       whileInView={{ x: x, y: y }}
@@ -77,9 +77,9 @@ const Skills = () => {
 
   return (
     <>
-      <div className="w-[100%] flex items-center justify-center">
+      <div className="w-[100%] flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-50 min-h-screen">
         <div className="w-[70%] h-[100%] ">
-          <h2 className="font-bold text-8xl w-full text-center md:text-6xl md:mt-2">
+          <h2 className="font-bold text-8xl w-full text-center md:text-6xl md:mt-2 bg-gradient-to-r from-emerald-600 to-green-700 bg-clip-text text-transparent">
             {currentTopic.name}
           </h2>
           <div
@@ -88,7 +88,7 @@ const Skills = () => {
           sm:bg-circularLightSm"
           >
             <motion.div
-              className="flex items-center justify-center rounded-full font-semibold bg-dark text-light p-8 shadow-dark cursor-pointer lg:p-6 md:p-4 xs:text-xs xs:p-2"
+              className="flex items-center justify-center rounded-full font-semibold bg-gradient-to-br from-emerald-600 to-green-700 text-white p-8 shadow-xl cursor-pointer lg:p-6 md:p-4 xs:text-xs xs:p-2 border-2 border-emerald-300"
               whileHover={{ scale: 1.05 }}
             >
               {currentTopic.name}
@@ -107,42 +107,41 @@ const Skills = () => {
 
             {/* Modal */}
             {isModalOpen && selectedSkill && (
-              <div className="fixed inset-0 bg-gray-900 bg-opacity-40 flex justify-center items-center">
-                <div className="bg-white p-8 rounded-xl shadow-lg max-w-lg w-full relative">
+              <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center backdrop-blur-sm z-50">
+                <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-lg w-full relative border-2 border-emerald-200">
                   {/* Quiz Title */}
-                  <h2 className="text-2xl font-semibold mb-6 text-center">
-                    {selectedSkill.name} Quiz
+                  <h2 className="text-2xl font-semibold mb-6 text-center text-emerald-800">
+                    {selectedSkill.name} Quiz ✨
                   </h2>
 
                   {quizCompleted ? (
-                    <p className="text-green-600 font-bold text-center">
-                      Quiz completed! This skill is now marked as completed.
+                    <p className="text-emerald-600 font-bold text-center text-lg">
+                      ✓ Quiz completed! This skill is now marked as completed.
                     </p>
                   ) : (
                     <>
                       {/* Question */}
-                      <p className="font-medium text-lg mb-4">
+                      <p className="font-medium text-lg mb-4 text-gray-800">
                         {quizIndex + 1}.{" "}
                         {selectedSkill.quiz[quizIndex].question}
                       </p>
 
                       {/* Options */}
-                      <div className="mt-4">
+                      <div className="mt-4 space-y-2">
                         {selectedSkill.quiz[quizIndex].options.map(
                           (option, idx) => (
                             <button
                               key={idx}
                               onClick={() => handleQuizAnswer(option)}
-                              className={`block py-2 px-4 mb-2 w-full rounded-lg text-left font-semibold 
+                              className={`block py-3 px-4 w-full rounded-xl text-left font-semibold transition-all duration-300 shadow-md hover:shadow-lg
                               ${
                                 selectedOption === option &&
                                 option === selectedSkill.quiz[quizIndex].answer
-                                  ? "bg-green-500 text-white" // Correct answer
+                                  ? "bg-gradient-to-r from-emerald-500 to-green-600 text-white transform scale-105" // Correct answer
                                   : selectedOption === option
-                                  ? "bg-red-500 text-white" // Wrong answer
-                                  : "bg-gray-200 text-gray-900"
-                              } // Default state
-                                transition duration-300`}
+                                  ? "bg-gradient-to-r from-red-400 to-red-500 text-white transform scale-105" // Wrong answer
+                                  : "bg-white text-gray-800 border-2 border-emerald-200 hover:border-emerald-300"
+                              }`}
                             >
                               {option}
                             </button>
@@ -155,24 +154,24 @@ const Skills = () => {
                   {/* Buttons */}
                   <div className="flex justify-between items-center mt-8">
                     <button
-                      className="py-2 px-6 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition duration-300"
+                      className="py-2.5 px-6 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition duration-300 shadow-md"
                       onClick={handleCloseModal}
                     >
                       Close
                     </button>
                     {!quizCompleted && (
                       <button
-                        className={`py-2 px-6 rounded-lg font-semibold transition duration-300
+                        className={`py-2.5 px-6 rounded-lg font-semibold transition-all duration-300 shadow-md
                       ${
                         selectedOption === null
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-blue-500 text-white hover:bg-blue-600"
+                          ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                          : "bg-gradient-to-r from-emerald-500 to-green-600 text-white hover:from-emerald-600 hover:to-green-700 hover:shadow-lg"
                       }
                         `}
                         onClick={handleNextQuestion}
                         disabled={selectedOption === null} // Disable Next button if no option selected
                       >
-                        Next
+                        Next →
                       </button>
                     )}
                   </div>
@@ -181,18 +180,18 @@ const Skills = () => {
             )}
           </div>
           {/* Navigation Buttons */}
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8 gap-4">
             <button
-              className="mx-4 py-2 px-6 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition duration-300"
+              className="py-2.5 px-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg hover:from-emerald-600 hover:to-green-700 transition-all duration-300 font-semibold shadow-md hover:shadow-lg"
               onClick={handlePreviousTopic}
             >
-              Previous
+              ← Previous
             </button>
             <button
-              className="mx-4 py-2 px-9 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition duration-300"
+              className="py-2.5 px-9 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg hover:from-emerald-600 hover:to-green-700 transition-all duration-300 font-semibold shadow-md hover:shadow-lg"
               onClick={handleNextTopic}
             >
-              Next
+              Next →
             </button>
           </div>{" "}
         </div>

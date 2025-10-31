@@ -103,7 +103,7 @@ export function CalendarComponent() {
   }, []);
 
   return (
-    <div className="w-full h-full relative bg-purple-50 p-4 rounded-lg">
+    <div className="w-full h-full relative bg-mint-green p-6 rounded-2xl shadow-lg border border-emerald-200">
       <Fullcalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -116,12 +116,18 @@ export function CalendarComponent() {
         events={events}
         buttonText={{
           today: "Today",
-          prev: "<",
-          next: ">",
-          // Add any other buttons you want to customize here
+          prev: "←",
+          next: "→",
         }}
-        className="bg-purple-100 text-purple-800"
-        eventColor="#c4b5e4" // Light purple for events
+        className="bg-white text-emerald-900 rounded-xl shadow-inner p-2"
+        eventColor="#10b981" // Emerald green for events
+        eventTextColor="#ffffff"
+        eventBorderColor="#059669"
+        dayHeaderClassNames="bg-emerald-100 text-emerald-900 font-semibold"
+        dayCellClassNames="hover:bg-emerald-50 transition-colors duration-200"
+        todayClassNames="bg-mint-green border-2 border-emerald-400"
+        buttonClassNames="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-2 rounded-lg transition-colors duration-200"
+        titleClassNames="text-emerald-900 font-bold text-xl"
       />
     </div>
   );
@@ -129,7 +135,7 @@ export function CalendarComponent() {
 
 function Calendar() {
   return (
-    <div className="bg-purple-50 w-[92.5%] h-[100%] p-9 flex">
+    <div className="bg-gradient-to-br from-emerald-50 to-mint-green w-[92.5%] h-[100%] p-8 flex">
       <CalendarComponent />
     </div>
   );

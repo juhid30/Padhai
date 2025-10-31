@@ -10,15 +10,15 @@ const SuccessModal = ({ data, onClose }) => {
 
   if (isApplicationSuccess) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full overflow-y-auto">
-          <h2 className="text-3xl font-bold text-indigo-900 mb-4">
-            Application Submitted
+      <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-2xl w-full overflow-y-auto border-2 border-emerald-200">
+          <h2 className="text-3xl font-bold text-emerald-800 mb-4">
+            Application Submitted ✨
           </h2>
-          <p className="mb-6">{data}</p>
+          <p className="mb-6 text-gray-700">{data}</p>
           <div className="flex justify-end">
             <button
-              className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500"
+              className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg font-medium"
               onClick={onClose}
             >
               Close
@@ -34,57 +34,57 @@ const SuccessModal = ({ data, onClose }) => {
   const job2 = job_comparison?.job2 || {};
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <h2 className="text-3xl font-bold text-indigo-900 mb-4">
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
+      <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border-2 border-emerald-200">
+        <h2 className="text-3xl font-bold text-emerald-800 mb-4">
           Comparison Results
         </h2>
 
-        <div className="mb-6">
-          <h3 className="text-2xl font-semibold text-indigo-800 mb-2">Job 1</h3>
-          <p className="mb-2">
-            <strong>Key Qualifications and Experience:</strong>{" "}
+        <div className="mb-6 bg-mint-50 p-4 rounded-xl border border-emerald-100">
+          <h3 className="text-2xl font-semibold text-emerald-700 mb-2">Job 1</h3>
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Key Qualifications and Experience:</strong>{" "}
             {job1.key_qualifications_and_experience || "N/A"}
           </p>
-          <p className="mb-2">
-            <strong>Potential Gaps or Areas for Exploration:</strong>{" "}
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Potential Gaps or Areas for Exploration:</strong>{" "}
             {job1.potential_gaps_or_areas_for_exploration || "N/A"}
           </p>
-          <p className="mb-2">
-            <strong>Summary:</strong> {job1.summary || "N/A"}
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Summary:</strong> {job1.summary || "N/A"}
           </p>
         </div>
 
-        <div className="mb-6">
-          <h3 className="text-2xl font-semibold text-indigo-800 mb-2">Job 2</h3>
-          <p className="mb-2">
-            <strong>Key Qualifications and Experience:</strong>{" "}
+        <div className="mb-6 bg-mint-50 p-4 rounded-xl border border-emerald-100">
+          <h3 className="text-2xl font-semibold text-emerald-700 mb-2">Job 2</h3>
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Key Qualifications and Experience:</strong>{" "}
             {job2.key_qualifications_and_experience || "N/A"}
           </p>
-          <p className="mb-2">
-            <strong>Potential Gaps or Areas for Exploration:</strong>{" "}
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Potential Gaps or Areas for Exploration:</strong>{" "}
             {job2.potential_gaps_or_areas_for_exploration || "N/A"}
           </p>
-          <p className="mb-2">
-            <strong>Summary:</strong> {job2.summary || "N/A"}
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Summary:</strong> {job2.summary || "N/A"}
           </p>
         </div>
 
-        <div className="mb-6">
-          <h3 className="text-2xl font-semibold text-indigo-800 mb-2">
+        <div className="mb-6 bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+          <h3 className="text-2xl font-semibold text-emerald-700 mb-2">
             Recommendation
           </h3>
-          <p className="mb-2">
-            <strong>Better Fit:</strong> {recommendation?.better_fit || "N/A"}
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Better Fit:</strong> {recommendation?.better_fit || "N/A"}
           </p>
-          <p className="mb-2">
-            <strong>Reason:</strong> {recommendation?.reason || "N/A"}
+          <p className="mb-2 text-gray-700">
+            <strong className="text-emerald-800">Reason:</strong> {recommendation?.reason || "N/A"}
           </p>
         </div>
 
         <div className="flex justify-end">
           <button
-            className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500"
+            className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg font-medium"
             onClick={onClose}
           >
             Close
@@ -98,10 +98,10 @@ const SuccessModal = ({ data, onClose }) => {
 // Custom Button component
 const Button = ({ children, onClick, disabled, className }) => (
   <button
-    className={`px-4 py-2 rounded font-semibold ${
+    className={`px-5 py-2.5 rounded-lg font-semibold transition-all duration-200 ${
       disabled
-        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-        : "bg-indigo-600 text-white hover:bg-indigo-500"
+        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+        : "bg-gradient-to-r from-emerald-500 to-green-600 text-white hover:from-emerald-600 hover:to-green-700 shadow-md hover:shadow-lg"
     } ${className}`}
     onClick={onClick}
     disabled={disabled}
@@ -115,7 +115,7 @@ const Checkbox = ({ checked, onChange, disabled }) => (
   <label className="inline-flex items-center">
     <input
       type="checkbox"
-      className="form-checkbox h-5 w-5 text-indigo-600"
+      className="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500"
       checked={checked}
       onChange={onChange}
       disabled={disabled}
@@ -134,6 +134,7 @@ const InternshipFetch = () => {
   const [responseData, setResponseData] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessModal, setIsSuccessModal] = useState(false);
+  const [resumeFile, setResumeFile] = useState(null);
   const studentId = "library-test-student"; // Adjust this as needed
 
   useEffect(() => {
@@ -227,33 +228,33 @@ const InternshipFetch = () => {
   };
 
   const CompareModal = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <h2 className="text-3xl font-bold text-indigo-900 mb-4">Compare Internships</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
+      <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border-2 border-emerald-200">
+        <h2 className="text-3xl font-bold text-emerald-800 mb-4">Compare Internships</h2>
         <div className="grid grid-cols-2 gap-4 mb-6">
           {selectedForCompare.map((internship) => (
-            <div key={internship.id} className="border p-4 rounded">
-              <h3 className="text-2xl font-semibold text-indigo-800 mb-2">
+            <div key={internship.id} className="border-2 border-emerald-200 p-5 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-2xl font-semibold text-emerald-700 mb-3">
                 {internship.title}
               </h3>
-              <p className="mb-2"><strong>Company:</strong> {internship.companyName}</p>
-              <p className="mb-2"><strong>Description:</strong> {internship.desc}</p>
-              <p className="mb-2"><strong>Duration:</strong> {internship.duration}</p>
-              <p className="mb-2"><strong>Last Date to Apply:</strong> {new Date(internship.lastDateToApply.seconds * 1000).toLocaleDateString()}</p>
-              <p className="mb-2"><strong>Stipend:</strong> {internship.salary}</p>
+              <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Company:</strong> {internship.companyName}</p>
+              <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Description:</strong> {internship.desc}</p>
+              <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Duration:</strong> {internship.duration}</p>
+              <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Last Date to Apply:</strong> {new Date(internship.lastDateToApply.seconds * 1000).toLocaleDateString()}</p>
+              <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Stipend:</strong> {internship.salary}</p>
             </div>
           ))}
         </div>
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">Upload Your Resume</h3>
+        <div className="mb-6 bg-mint-50 p-4 rounded-xl border border-emerald-100">
+          <h3 className="text-xl font-semibold mb-2 text-emerald-800">Upload Your Resume</h3>
           <input
             type="file"
             onChange={handleResumeUpload}
             accept=".pdf,.doc,.docx"
-            className="mb-2"
+            className="mb-2 text-gray-700"
           />
           {resumeFile && (
-            <p className="text-sm text-green-600">File selected: {resumeFile.name}</p>
+            <p className="text-sm text-emerald-600 font-medium">✓ File selected: {resumeFile.name}</p>
           )}
         </div>
         <div className="flex justify-end space-x-4">
@@ -262,7 +263,7 @@ const InternshipFetch = () => {
           </Button>
           <Button
             onClick={() => setShowCompareModal(false)}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400"
+            className="bg-gray-200 text-gray-700 hover:bg-gray-300"
             disabled={isSubmitting}
           >
             Close
@@ -273,15 +274,17 @@ const InternshipFetch = () => {
   );
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gradient-to-br from-green-50 via-white to-emerald-50 min-h-screen">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-6xl font-bold text-indigo-800">INTERNSHIPS</h1>
+        <h1 className="text-6xl font-bold bg-gradient-to-r from-emerald-600 to-green-700 bg-clip-text text-transparent">
+          INTERNSHIPS
+        </h1>
         <Button onClick={toggleCompareMode}>
           {isCompareMode ? "Cancel Compare" : "Compare"}
         </Button>
       </div>
 
-      <hr className="border-t-1 border-indigo-300 mb-9" />
+      <hr className="border-t-2 border-emerald-200 mb-9" />
 
       {isCompareMode && (
         <div className="mb-4">
@@ -297,13 +300,13 @@ const InternshipFetch = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {internships.map((internship) => (
           <div
-            className="border border-indigo-200 rounded-lg shadow-lg p-6 bg-indigo-50 transition-transform transform hover:scale-105 cursor-pointer relative"
+            className="border-2 border-emerald-200 rounded-2xl shadow-lg p-6 bg-gradient-to-br from-white to-green-50 transition-all transform hover:scale-105 hover:shadow-xl cursor-pointer relative"
             key={internship.id}
             onClick={() => openModal(internship)}
           >
             {isCompareMode && (
               <div
-                className="absolute top-2 right-2"
+                className="absolute top-3 right-3 bg-white p-1.5 rounded-lg shadow-md"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Checkbox
@@ -316,45 +319,47 @@ const InternshipFetch = () => {
                 />
               </div>
             )}
-            <h2 className="text-2xl font-semibold text-indigo-900 mb-2">
+            <h2 className="text-2xl font-semibold text-emerald-800 mb-2">
               {internship.title}
             </h2>
-            <p className="text-indigo-700 mb-2">
-              <strong>Company:</strong> {internship.companyName}
+            <p className="text-emerald-700 mb-2">
+              <strong className="text-emerald-800">Company:</strong> {internship.companyName}
             </p>
-            <p className="text-indigo-700">
-              <strong>Duration:</strong> {internship.duration}
+            <p className="text-emerald-700">
+              <strong className="text-emerald-800">Duration:</strong> {internship.duration}
             </p>
           </div>
         ))}
       </div>
 
       {isModalOpen && selectedInternship && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <h2 className="text-3xl font-bold text-indigo-900 mb-4">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border-2 border-emerald-200">
+            <h2 className="text-3xl font-bold text-emerald-800 mb-4">
               {selectedInternship.title}
             </h2>
-            <p className="mb-2"><strong>Company:</strong> {selectedInternship.companyName}</p>
-            <p className="mb-2"><strong>Description:</strong> {selectedInternship.desc}</p>
-            <p className="mb-2"><strong>Duration:</strong> {selectedInternship.duration}</p>
-            <p className="mb-2"><strong>Last Date to Apply:</strong> {new Date(selectedInternship.lastDateToApply.seconds * 1000).toLocaleDateString()}</p>
-            <p className="mb-2"><strong>Stipend:</strong> {selectedInternship.salary}</p>
+            <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Company:</strong> {selectedInternship.companyName}</p>
+            <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Description:</strong> {selectedInternship.desc}</p>
+            <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Duration:</strong> {selectedInternship.duration}</p>
+            <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Last Date to Apply:</strong> {new Date(selectedInternship.lastDateToApply.seconds * 1000).toLocaleDateString()}</p>
+            <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Stipend:</strong> {selectedInternship.salary}</p>
 
-            <input
-              type="file"
-              onChange={handleResumeUpload}
-              accept=".pdf,.doc,.docx"
-              className="mb-4"
-            />
-            {resumeFile && (
-              <p className="text-sm text-green-600">File selected: {resumeFile.name}</p>
-            )}
-            <div className="flex justify-end space-x-4">
+            <div className="mt-4 bg-mint-50 p-4 rounded-xl border border-emerald-100">
+              <input
+                type="file"
+                onChange={handleResumeUpload}
+                accept=".pdf,.doc,.docx"
+                className="mb-2 text-gray-700"
+              />
+              {resumeFile && (
+                <p className="text-sm text-emerald-600 font-medium">✓ File selected: {resumeFile.name}</p>
+              )}
+            </div>
+            <div className="flex justify-end space-x-4 mt-6">
               <Button onClick={applyToInternship} disabled={isSubmitting}>
                 {isSubmitting ? "Submitting..." : "Apply"}
               </Button>
-              <Button onClick={closeModal} className="bg-gray-300 text-gray-700 hover:bg-gray-400">
+              <Button onClick={closeModal} className="bg-gray-200 text-gray-700 hover:bg-gray-300">
                 Close
               </Button>
             </div>

@@ -164,15 +164,15 @@ const AssignmentSubmission = () => {
   };
 
   return (
-    <div className="p-6 bg-[#e0c6f6] rounded-lg shadow-md w-full overflow-hidden">
+    <div className="p-6 bg-gradient-to-br from-green-50 via-white to-emerald-50 rounded-3xl shadow-md w-full overflow-hidden border-2 border-green-200/50">
       {/* Pending Assignments */}
       <section className="mb-6">
         <div
-          className="flex justify-between items-center cursor-pointer bg-[#6a5acd] text-white p-2 rounded-lg mb-2 transition duration-300 hover:bg-[#5a4bcd]"
+          className="flex justify-between items-center cursor-pointer bg-gradient-to-r from-emerald-400 to-emerald-500 text-white p-4 rounded-2xl mb-3 transition duration-300 hover:from-emerald-500 hover:to-emerald-600 shadow-sm"
           onClick={() => toggleSection("pending")}
         >
-          <h2 className="text-lg font-semibold">Pending Assignments</h2>
-          <span>{expandedSection === "pending" ? "▲" : "▼"}</span>
+          <h2 className="text-lg font-bold">Pending Assignments</h2>
+          <span className="text-xl">{expandedSection === "pending" ? "▲" : "▼"}</span>
         </div>
         {expandedSection === "pending" && (
           <div
@@ -187,15 +187,15 @@ const AssignmentSubmission = () => {
               pendingAssignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col"
+                  className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col border-2 border-green-200/50"
                 >
-                  <h3 className="text-xl font-semibold">{assignment.topic}</h3>
-                  <p>Subject: {assignment.subject}</p>
-                  <p>
+                  <h3 className="text-xl font-bold text-gray-800">{assignment.topic}</h3>
+                  <p className="text-gray-600 font-medium">Subject: {assignment.subject}</p>
+                  <p className="text-gray-600 font-medium">
                     Date of Assignment:{" "}
                     {new Date(assignment.doa).toLocaleDateString()}
                   </p>
-                  <p>
+                  <p className="text-gray-600 font-medium">
                     Due Date:{" "}
                     {assignment.dos
                       ? new Date(
@@ -205,14 +205,14 @@ const AssignmentSubmission = () => {
                   </p>
                   <button
                     onClick={() => handleSubmit(assignment.id)}
-                    className="mt-2 bg-indigo-600 text-white py-2 px-4 rounded transition duration-300 hover:bg-indigo-700"
+                    className="mt-3 bg-gradient-to-r from-emerald-400 to-emerald-500 text-white font-bold py-2 px-4 rounded-xl transition duration-300 hover:from-emerald-500 hover:to-emerald-600 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
                   >
                     Submit
                   </button>
                 </div>
               ))
             ) : (
-              <p>No pending assignments.</p>
+              <p className="text-gray-500 font-medium">No pending assignments.</p>
             )}
           </div>
         )}
@@ -221,11 +221,11 @@ const AssignmentSubmission = () => {
       {/* Past Due Assignments */}
       <section className="mb-6">
         <div
-          className="flex justify-between items-center cursor-pointer bg-[#5b5ea6] text-white p-2 rounded-lg mb-2 transition duration-300 hover:bg-[#4b4e96]"
+          className="flex justify-between items-center cursor-pointer bg-gradient-to-r from-green-400 to-green-500 text-white p-4 rounded-2xl mb-3 transition duration-300 hover:from-green-500 hover:to-green-600 shadow-sm"
           onClick={() => toggleSection("pastDue")}
         >
-          <h2 className="text-lg font-semibold">Past Due Assignments</h2>
-          <span>{expandedSection === "pastDue" ? "▲" : "▼"}</span>
+          <h2 className="text-lg font-bold">Past Due Assignments</h2>
+          <span className="text-xl">{expandedSection === "pastDue" ? "▲" : "▼"}</span>
         </div>
         {expandedSection === "pastDue" && (
           <div
@@ -240,15 +240,15 @@ const AssignmentSubmission = () => {
               pastDueAssignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col"
+                  className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col border-2 border-green-200/50"
                 >
-                  <h3 className="text-xl font-semibold">{assignment.topic}</h3>
-                  <p>Subject: {assignment.subject}</p>
-                  <p>
+                  <h3 className="text-xl font-bold text-gray-800">{assignment.topic}</h3>
+                  <p className="text-gray-600 font-medium">Subject: {assignment.subject}</p>
+                  <p className="text-gray-600 font-medium">
                     Date of Assignment:{" "}
                     {new Date(assignment.doa).toLocaleDateString()}
                   </p>
-                  <p>
+                  <p className="text-gray-600 font-medium">
                     Due Date:{" "}
                     {assignment.dos
                       ? new Date(
@@ -258,14 +258,14 @@ const AssignmentSubmission = () => {
                   </p>
                   <button
                     onClick={() => handleSubmit(assignment.id)}
-                    className="mt-2 bg-zinc-500 text-white py-2 px-4 rounded transition duration-300 hover:bg-zinc-600"
+                    className="mt-3 bg-gradient-to-r from-gray-400 to-gray-500 text-white font-bold py-2 px-4 rounded-xl transition duration-300 hover:from-gray-500 hover:to-gray-600 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
                   >
                     Submit
                   </button>
                 </div>
               ))
             ) : (
-              <p>No past due assignments.</p>
+              <p className="text-gray-500 font-medium">No past due assignments.</p>
             )}
           </div>
         )}
@@ -274,11 +274,11 @@ const AssignmentSubmission = () => {
       {/* Submitted Assignments */}
       <section className="mb-6">
         <div
-          className="flex justify-between items-center cursor-pointer bg-[#4e4f7d] text-white p-2 rounded-lg mb-2 transition duration-300 hover:bg-[#3e3e6d]"
+          className="flex justify-between items-center cursor-pointer bg-gradient-to-r from-teal-400 to-teal-500 text-white p-4 rounded-2xl mb-3 transition duration-300 hover:from-teal-500 hover:to-teal-600 shadow-sm"
           onClick={() => toggleSection("submitted")}
         >
-          <h2 className="text-; font-semibold">Submitted Assignments</h2>
-          <span>{expandedSection === "submitted" ? "▲" : "▼"}</span>
+          <h2 className="text-lg font-bold">Submitted Assignments</h2>
+          <span className="text-xl">{expandedSection === "submitted" ? "▲" : "▼"}</span>
         </div>
         {expandedSection === "submitted" && (
           <div
@@ -293,19 +293,19 @@ const AssignmentSubmission = () => {
               submittedAssignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col"
+                  className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col border-2 border-green-200/50"
                 >
-                  <h3 className="text-xl font-semibold">{assignment.topic}</h3>
-                  <p>Subject: {assignment.subject}</p>
-                  <p>
+                  <h3 className="text-xl font-bold text-gray-800">{assignment.topic}</h3>
+                  <p className="text-gray-600 font-medium">Subject: {assignment.subject}</p>
+                  <p className="text-gray-600 font-medium">
                     Submitted On:{" "}
                     {new Date(assignment.submittedOn).toLocaleDateString()}
                   </p>
-                  <p>Status: {assignment.isLate ? "Late" : "On Time"}</p>
+                  <p className="text-gray-600 font-medium">Status: {assignment.isLate ? "Late" : "On Time"}</p>
                 </div>
               ))
             ) : (
-              <p>No submitted assignments.</p>
+              <p className="text-gray-500 font-medium">No submitted assignments.</p>
             )}
           </div>
         )}
@@ -313,22 +313,28 @@ const AssignmentSubmission = () => {
 
       {/* Modal for file upload */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6">
-            <h2 className="text-2xl mb-4">Upload Assignment</h2>
-            <input type="file" onChange={handleFileChange} />
-            <button
-              onClick={handleUpload}
-              className="mt-4 bg-blue-600 text-white py-2 px-4 rounded transition duration-300 hover:bg-blue-700"
-            >
-              Upload
-            </button>
-            <button
-              onClick={toggleModal}
-              className="mt-2 bg-gray-300 text-black py-2 px-4 rounded transition duration-300 hover:bg-gray-400"
-            >
-              Cancel
-            </button>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
+          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-lg border-2 border-green-200/50 max-w-md w-full mx-4">
+            <h2 className="text-2xl font-bold text-gray-800 mb-5">Upload Assignment ✨</h2>
+            <input 
+              type="file" 
+              onChange={handleFileChange}
+              className="w-full mb-4 px-4 py-3 bg-green-50/50 border-2 border-green-200 rounded-2xl focus:outline-none focus:border-green-400 transition-all duration-200"
+            />
+            <div className="flex gap-3">
+              <button
+                onClick={handleUpload}
+                className="flex-1 bg-gradient-to-r from-emerald-400 to-emerald-500 text-white font-bold py-3 px-4 rounded-2xl transition duration-300 hover:from-emerald-500 hover:to-emerald-600 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
+              >
+                Upload
+              </button>
+              <button
+                onClick={toggleModal}
+                className="flex-1 bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 font-bold py-3 px-4 rounded-2xl transition duration-300 hover:from-gray-400 hover:to-gray-500 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}

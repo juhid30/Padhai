@@ -21,6 +21,7 @@ import { Roadmap } from "./components/Roadmap.jsx";
 import VideoPlayer from "./components/VideoPlayer.jsx";
 import BookLendingPage from "./components/BookLendingPage";
 import AppliedToInternship from "./components/AppliedToInternship";
+import ResumeUpload from "./components/ResumeUpload.jsx";
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component {
@@ -97,6 +98,7 @@ function App() {
             path="/applied-to-internship"
             element={<AppliedToInternship />}
           />
+          <Route path="/resume-upload" element={<ResumeUpload/>}/>
         </Routes>
       </Router>
     </div>

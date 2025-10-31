@@ -50,16 +50,16 @@ const UploadListing = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-10 w-[100%]">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-blue-600">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100 py-10 w-[100%]">
+      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md border border-orange-200">
+        <h1 className="text-3xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">
           Post New Internship
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label
-              className="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-semibold text-gray-800"
               htmlFor="companyName"
             >
               Company Name
@@ -71,14 +71,14 @@ const UploadListing = () => {
               value={formData.companyName}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-orange-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-400 transition-all duration-200 bg-orange-50"
               placeholder="Deutsche Bank"
             />
           </div>
 
           <div>
             <label
-              className="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-semibold text-gray-800"
               htmlFor="title"
             >
               Internship Title
@@ -90,14 +90,14 @@ const UploadListing = () => {
               value={formData.title}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-orange-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-400 transition-all duration-200 bg-orange-50"
               placeholder="Web Developer"
             />
           </div>
 
           <div>
             <label
-              className="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-semibold text-gray-800"
               htmlFor="desc"
             >
               Description
@@ -108,7 +108,7 @@ const UploadListing = () => {
               value={formData.desc}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-orange-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-400 transition-all duration-200 bg-orange-50"
               placeholder="Describe the internship..."
               rows="4"
             />
@@ -116,7 +116,7 @@ const UploadListing = () => {
 
           <div>
             <label
-              className="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-semibold text-gray-800"
               htmlFor="duration"
             >
               Duration
@@ -128,14 +128,14 @@ const UploadListing = () => {
               value={formData.duration}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-orange-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-400 transition-all duration-200 bg-orange-50"
               placeholder="6 months"
             />
           </div>
 
           <div>
             <label
-              className="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-semibold text-gray-800"
               htmlFor="lastDateToApply"
             >
               Last Date to Apply
@@ -147,13 +147,13 @@ const UploadListing = () => {
               value={formData.lastDateToApply}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-orange-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-400 transition-all duration-200 bg-orange-50"
             />
           </div>
 
           <div>
             <label
-              className="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-semibold text-gray-800"
               htmlFor="salary"
             >
               Salary
@@ -165,7 +165,7 @@ const UploadListing = () => {
               value={formData.salary}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-orange-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-400 transition-all duration-200 bg-orange-50"
               placeholder="50000"
             />
           </div>
@@ -173,21 +173,23 @@ const UploadListing = () => {
           {loading ? (
             <button
               disabled
-              className="w-full py-2 px-4 bg-blue-400 text-white font-bold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full py-3 px-4 bg-orange-400 text-white font-bold rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200"
             >
               Posting...
             </button>
           ) : (
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full py-3 px-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl shadow-lg hover:from-orange-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transform hover:scale-105 transition-all duration-200"
             >
               Post Internship
             </button>
           )}
 
           {successMessage && (
-            <p className="text-green-500 text-center mt-4">{successMessage}</p>
+            <p className="text-green-600 text-center mt-4 font-semibold bg-green-50 py-2 rounded-lg border border-green-200">
+              {successMessage}
+            </p>
           )}
         </form>
       </div>

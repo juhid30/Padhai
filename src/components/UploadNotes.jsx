@@ -79,74 +79,148 @@ const UploadNotes = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-[100%] bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
+    <div className="flex items-center justify-center min-h-screen w-[100%] bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
       <form
-        className="bg-white w-full max-w-md rounded-3xl shadow-lg p-8"
+        className="bg-white/95 backdrop-blur-sm w-full max-w-md rounded-3xl shadow-2xl border-2 border-orange-200 p-10 hover:shadow-orange-200 transition-shadow duration-300"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-semibold text-center text-blue-700 mb-6">
-          Upload Document
-        </h2>
-
-        <input
-          type="text"
-          value={documentName}
-          onChange={(e) => setDocumentName(e.target.value)}
-          placeholder="Document Name"
-          required
-          className="w-full p-4 mb-4 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        <input
-          type="text"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          placeholder="Subject"
-          required
-          className="w-full p-4 mb-4 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        {/* Custom File Upload Button */}
-        <div className="mb-4">
-          <label
-            className="w-full p-4 flex items-center justify-center bg-blue-100 text-blue-600 border border-blue-400 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white transition-all duration-200"
-            htmlFor="file-upload"
-          >
-            {file ? file.name : "Upload File"}
-          </label>
-          <input
-            type="file"
-            id="file-upload"
-            onChange={handleFileChange}
-            className="hidden"
-          />
+        <div className="flex items-center justify-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg">
+            <span className="text-4xl">📄</span>
+          </div>
         </div>
 
-        <select
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          required
-          className="w-full p-4 mb-6 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="" disabled>
-            Select Year
-          </option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-        </select>
+        <h2 className="text-3xl font-bold text-center text-orange-800 mb-2 tracking-tight">
+          Upload Document
+        </h2>
+        <p className="text-center text-orange-600 mb-8 text-sm">
+          Share your notes with accuracy check ✨
+        </p>
 
-        <button
-          type="submit"
-          className="w-full p-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
-          disabled={isUploading} // Disable the button while uploading
-        >
-          {isUploading ? "Uploading..." : "Upload Document"} {/* Change button text */}
-        </button>
+        <div className="space-y-5">
+          <div>
+            <label className="text-sm font-semibold text-orange-700 mb-2 block flex items-center">
+              <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Document Name
+            </label>
+            <input
+              type="text"
+              value={documentName}
+              onChange={(e) => setDocumentName(e.target.value)}
+              placeholder="Enter document name"
+              required
+              className="w-full p-4 text-gray-800 bg-white/80 border-2 border-orange-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 focus:border-orange-400 placeholder-orange-300 hover:border-orange-300 transition-all duration-300"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-orange-700 mb-2 block flex items-center">
+              <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Subject
+            </label>
+            <input
+              type="text"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              placeholder="Enter subject name"
+              required
+              className="w-full p-4 text-gray-800 bg-white/80 border-2 border-orange-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 focus:border-orange-400 placeholder-orange-300 hover:border-orange-300 transition-all duration-300"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-orange-700 mb-2 block flex items-center">
+              <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Upload File
+            </label>
+            <label
+              className="w-full p-4 flex items-center justify-center bg-gradient-to-r from-orange-50 to-amber-50 text-orange-700 border-2 border-orange-200 rounded-2xl cursor-pointer hover:from-orange-100 hover:to-amber-100 hover:border-orange-400 hover:scale-[1.02] transition-all duration-300 font-semibold"
+              htmlFor="file-upload"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                />
+              </svg>
+              {file ? file.name : "Choose a file"}
+            </label>
+            <input
+              type="file"
+              id="file-upload"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-semibold text-orange-700 mb-2 block flex items-center">
+              <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Year
+            </label>
+            <select
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              required
+              className="w-full p-4 text-gray-800 bg-white/80 border-2 border-orange-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 focus:border-orange-400 hover:border-orange-300 transition-all duration-300"
+            >
+              <option value="" disabled className="text-orange-400">
+                Select Year
+              </option>
+              <option value={1}>First Year</option>
+              <option value={2}>Second Year</option>
+              <option value={3}>Third Year</option>
+              <option value={4}>Fourth Year</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className={`w-full p-4 mt-6 font-semibold text-lg rounded-2xl text-white transition-all duration-300 transform ${
+              isUploading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 hover:scale-105 hover:shadow-lg hover:shadow-orange-300"
+            }`}
+            disabled={isUploading}
+          >
+            {isUploading ? (
+              <span className="flex items-center justify-center">
+                <svg
+                  className="animate-spin h-5 w-5 mr-3 text-white"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+                Uploading...
+              </span>
+            ) : (
+              "Upload Document"
+            )}
+          </button>
+        </div>
 
         {responseText && (
-          <div className="mt-6 p-4 bg-blue-100 text-blue-800 rounded-lg">
+          <div className="mt-6 p-4 rounded-2xl text-center font-medium bg-gradient-to-r from-orange-100 to-amber-100 text-orange-800 border-2 border-orange-300 shadow-sm">
             <p>{responseText}</p>
           </div>
         )}

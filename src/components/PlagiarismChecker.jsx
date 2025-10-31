@@ -124,67 +124,180 @@ const PlagiarismChecker = () => {
   };
 
   return (
-    <Box mx="auto" mt={10} p={5} border="1px" borderRadius="md" boxShadow="lg" className="w-[70%]">
-      <Text fontSize="5xl" mb={6} textAlign="center" fontWeight="bold">
-        Plagiarism Checker
+    <Box 
+      mx="auto" 
+      mt={10} 
+      p={8} 
+      border="2px" 
+      borderColor="green.300"
+      borderRadius="2xl" 
+      boxShadow="2xl" 
+      className="w-[70%]"
+      bgGradient="linear(to-br, white, green.50)"
+    >
+      <Text 
+        fontSize="5xl" 
+        mb={8} 
+        textAlign="center" 
+        fontWeight="bold"
+        bgGradient="linear(to-r, green.600, green.700)"
+        bgClip="text"
+      >
+        Plagiarism Checker 
       </Text>
 
       <Flex direction="column" align="center" justify="center" mb={4}>
-        <Input
-          type="file"
-          accept=".txt,.doc,.pdf"
-          onChange={handleFileChange}
-          mb={4}
-          w="full"
-        />
+        <Box 
+          w="full" 
+          mb={4} 
+          p={4} 
+          bg="green.50" 
+          borderRadius="xl" 
+          border="2px" 
+          borderColor="green.200"
+        >
+          <Input
+            type="file"
+            accept=".txt,.doc,.pdf"
+            onChange={handleFileChange}
+            w="full"
+            border="none"
+            _focus={{ boxShadow: "none" }}
+            color="gray.700"
+          />
+        </Box>
         <Button
           onClick={handleUpload}
-          colorScheme="purple"
           size="lg"
           w="full"
           mb={4}
-          _hover={{ bg: "purple.300" }}
+          bgGradient="linear(to-r, green.500, green.600)"
+          color="white"
+          fontWeight="semibold"
+          borderRadius="lg"
+          _hover={{ 
+            bgGradient: "linear(to-r, green.600, green.700)",
+            transform: "translateY(-2px)",
+            boxShadow: "lg"
+          }}
+          transition="all 0.2s"
+          boxShadow="md"
         >
           Upload Document
         </Button>
         <Button
           onClick={handleCheckPlagiarism}
-          colorScheme="purple"
           size="lg"
           w="full"
           isDisabled={!file || isRateLimited}
-          _hover={{ bg: "purple.300" }}
+          bgGradient="linear(to-r, green.500, green.600)"
+          color="white"
+          fontWeight="semibold"
+          borderRadius="lg"
+          _hover={{ 
+            bgGradient: "linear(to-r, green.600, green.700)",
+            transform: "translateY(-2px)",
+            boxShadow: "lg"
+          }}
+          _disabled={{
+            bgGradient: "linear(to-r, gray.300, gray.400)",
+            cursor: "not-allowed",
+            transform: "none"
+          }}
+          transition="all 0.2s"
+          boxShadow="md"
         >
           Check Plagiarism
         </Button>
       </Flex>
 
       {dupliLinks.length > 0 && (
-        <Box mt={6} overflowX="auto">
-          <Text fontSize="lg" fontWeight="bold" mb={4}>
+        <Box 
+          mt={8} 
+          overflowX="auto" 
+          bg="white" 
+          p={6} 
+          borderRadius="xl" 
+          border="2px" 
+          borderColor="green.200"
+          boxShadow="md"
+        >
+          <Text 
+            fontSize="lg" 
+            fontWeight="bold" 
+            mb={4}
+            color="green.800"
+          >
             Plagiarism Results:
           </Text>
-          <Table variant="striped" colorScheme="purple" size="sm" className="w-full">
-            <Thead>
+          <Table variant="simple" size="sm" className="w-full">
+            <Thead bg="green.100">
               <Tr>
-                <Th fontSize="sm">Status</Th>
-                <Th fontSize="sm">Link</Th>
-                <Th fontSize="sm">Action</Th>
+                <Th 
+                  fontSize="sm" 
+                  color="green.800" 
+                  fontWeight="bold"
+                  borderColor="green.200"
+                >
+                  Status
+                </Th>
+                <Th 
+                  fontSize="sm" 
+                  color="green.800" 
+                  fontWeight="bold"
+                  borderColor="green.200"
+                >
+                  Link
+                </Th>
+                <Th 
+                  fontSize="sm" 
+                  color="green.800" 
+                  fontWeight="bold"
+                  borderColor="green.200"
+                >
+                  Action
+                </Th>
               </Tr>
             </Thead>
             <Tbody>
               {dupliLinks.map((link, index) => (
-                <Tr key={index}>
-                  <Td fontSize="sm">{dupliStatus}</Td>
-                  <Td fontSize="sm" isTruncated maxWidth="30%">{link}</Td>
-                  <Td>
+                <Tr 
+                  key={index}
+                  _hover={{ bg: "green.50" }}
+                  transition="all 0.2s"
+                >
+                  <Td 
+                    fontSize="sm" 
+                    color="gray.700"
+                    borderColor="green.100"
+                  >
+                    {dupliStatus}
+                  </Td>
+                  <Td 
+                    fontSize="sm" 
+                    isTruncated 
+                    maxWidth="30%"
+                    color="gray.700"
+                    borderColor="green.100"
+                  >
+                    {link}
+                  </Td>
+                  <Td borderColor="green.100">
                     <Button
                       as="a"
                       href={link}
                       target="_blank"
-                      colorScheme="purple"
                       size="sm"
-                      _hover={{ bg: "purple.300" }}
+                      bgGradient="linear(to-r, green.500, green.600)"
+                      color="white"
+                      fontWeight="semibold"
+                      borderRadius="md"
+                      _hover={{ 
+                        bgGradient: "linear(to-r, green.600, green.700)",
+                        transform: "translateY(-1px)",
+                        boxShadow: "md"
+                      }}
+                      transition="all 0.2s"
                     >
                       Visit
                     </Button>
