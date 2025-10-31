@@ -54,11 +54,11 @@ const Sidebar = () => {
       {/* Logo and User Info */}
       <div className="flex items-center mb-10">
         <div className="bg-purple-600 p-3 rounded-lg">
-          <span className="text-2xl font-bold">CL</span>
+          {/* <span className="text-2xl font-bold"></span> */}
         </div>
         <div className="ml-4">
-          <h2 className="text-lg font-semibold">Codinglab</h2>
-          <p className="text-sm text-gray-400">Web developer</p>
+          <h2 className="text-lg font-semibold">पढ़AI</h2>
+          <p className="text-sm text-gray-400"></p>
         </div>
       </div>
 

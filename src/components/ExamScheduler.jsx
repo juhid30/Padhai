@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
+import { useToast } from "@chakra-ui/react"; // Import useToast from Chakra UI
 
 const ExamScheduler = () => {
   const [title, setTitle] = useState("");
@@ -10,10 +11,11 @@ const ExamScheduler = () => {
   const [endTime, setEndTime] = useState("");
   const [allDay, setAllDay] = useState(false);
   const [year, setYear] = useState("");
-
+  const toast = useToast(); // Chakra UI's useToast hook
   // Firebase API call
   const addTestToFirebase = async (testData) => {
     try {
+      console.log("HEISD");
       const docRef = await addDoc(collection(db, "EventScheduling"), testData);
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
@@ -24,6 +26,7 @@ const ExamScheduler = () => {
   // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("sish");
     if (title && start && startTime && end && year) {
       const testData = allDay
         ? { title, start, allDay: true, year }
@@ -35,6 +38,14 @@ const ExamScheduler = () => {
           };
 
       addTestToFirebase(testData);
+      toast({
+        title: "Test scheduled.",
+        description: "The exam has been successfully scheduled.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
     } else {
       console.log("All fields are required");
     }
