@@ -4,7 +4,7 @@ const SuccessModal = ({ data, onClose }) => {
   if (!data) return null;
 
   // Check if data is a string (application success message) or an object (comparison results)
-  const isApplicationSuccess = typeof data === 'string';
+  const isApplicationSuccess = typeof data === "string";
 
   if (isApplicationSuccess) {
     return (
