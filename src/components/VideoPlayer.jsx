@@ -244,7 +244,7 @@ const VideoPlayer = () => {
                 <video
                   key={currentVideoIndex}
                   src={videos[currentVideoIndex]}
-                  className="rounded-2xl w-full h-80 object-cover shadow-inner"
+                  className="rounded-2xl w-full h-80 object-contain shadow-inner"
                   autoPlay
                 />
               </div>
