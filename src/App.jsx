@@ -51,18 +51,24 @@ function App() {
   const role = localStorage.getItem("userRole");
 
   return (
-    <div className="maindiv flex flex-row" style={{ width: "100%" }}>
+    <div className="maindiv flex bg-red-200" style={{ width: "100%" }}>
       <Router>
-        {role && <Sidebar className="sidebar" />}
+        {
+          role
+          // &&
+          // <Sidebar className="sidebar" />
+        }
         <Routes>
           <Route
             path="/"
             element={
               role === "Student" ? (
                 <Dashboard />
-              ) : role === "Teacher" ? (
+              )
+                : role === "Teacher" ? (
                 <TeacherDashboard />
-              ) : role === "Librarian" ? (
+                )
+                  : role === "Librarian" ? (
                 <BorrowedBooksPage />
               ) : (
                 <Login />
@@ -98,7 +104,7 @@ function App() {
             path="/applied-to-internship"
             element={<AppliedToInternship />}
           />
-          <Route path="/resume-upload" element={<ResumeUpload/>}/>
+          <Route path="/resume-upload" element={<ResumeUpload />} />
         </Routes>
       </Router>
     </div>
