@@ -52,7 +52,7 @@ const Sidebar = () => {
   return (
     <div className="min-h-screen bg-emerald-900 text-white w-64 p-5 flex flex-col shadow-2xl">
       {/* Logo and User Info */}
-<<<<<<< HEAD
+
       <div className="flex items-center mb-10 mt-4">
         <div className="bg-emerald-500 p-3 rounded-xl shadow-lg hover:shadow-emerald-400/30 transition-all duration-300">
           <span className="text-2xl font-bold text-white">CL</span>
@@ -60,15 +60,8 @@ const Sidebar = () => {
         <div className="ml-4">
           <h2 className="text-lg font-semibold text-mint-green">Codinglab</h2>
           <p className="text-sm text-emerald-200 font-medium">Web developer</p>
-=======
-      <div className="flex items-center mb-10">
-        <div className="bg-purple-600 p-3 rounded-lg">
-          {/* <span className="text-2xl font-bold"></span> */}
-        </div>
-        <div className="ml-4">
-          <h2 className="text-lg font-semibold">पढ़AI</h2>
-          <p className="text-sm text-gray-400"></p>
->>>>>>> e1d7dbaee135a1ce1ae6fab2ab97728aeeecd755
+
+
         </div>
       </div>
 

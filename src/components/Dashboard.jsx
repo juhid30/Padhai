@@ -126,7 +126,9 @@ const Dashboard = () => {
   };
 
   return (
+    
     <div className="flex">
+      <Sidebar/>
       <div className="flex-1 bg-gradient-to-br from-emerald-50 via-mint-50 to-green-50 p-6 min-h-screen">
         <h1 className="text-4xl font-bold mb-8 text-emerald-800 tracking-tight">
           Dashboard

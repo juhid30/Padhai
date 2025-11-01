@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, doc, setDoc, getDoc } from "firebase/firestore"; // Import necessary Firestore functions
-import SuccessModal from "./SuccessModal";
+import { collection, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
-<<<<<<< HEAD
 // SuccessModal Component
 const SuccessModal = ({ data, onClose }) => {
   if (!data) return null;
@@ -15,7 +13,7 @@ const SuccessModal = ({ data, onClose }) => {
       <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
         <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-2xl w-full overflow-y-auto border-2 border-emerald-200">
           <h2 className="text-3xl font-bold text-emerald-800 mb-4">
-            Application Submitted ✨
+            Application Submitted 
           </h2>
           <p className="mb-6 text-gray-700">{data}</p>
           <div className="flex justify-end">
@@ -125,30 +123,25 @@ const Checkbox = ({ checked, onChange, disabled }) => (
   </label>
 );
 
-=======
->>>>>>> e1d7dbaee135a1ce1ae6fab2ab97728aeeecd755
 // Main InternshipFetch Component
 const InternshipFetch = () => {
   const [internships, setInternships] = useState([]);
   const [selectedInternship, setSelectedInternship] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCompareModal, setShowCompareModal] = useState(false);
-<<<<<<< HEAD
   const [responseData, setResponseData] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessModal, setIsSuccessModal] = useState(false);
   const [resumeFile, setResumeFile] = useState(null);
-=======
-  const [resumeFile, setResumeFile] = useState(null);
-  const [comparisonResult, setComparisonResult] = useState(null);
   const [selectedForCompare, setSelectedForCompare] = useState([]);
->>>>>>> e1d7dbaee135a1ce1ae6fab2ab97728aeeecd755
-  const studentId = "library-test-student"; // Adjust this as needed
+  const [comparisonResult, setComparisonResult] = useState(null);
+  const [isCompareMode, setIsCompareMode] = useState(false);
+  const studentId = "library-test-student";
 
   // Fetch internship listings from Firestore
   useEffect(() => {
     const fetchInternships = async () => {
-      const internshipsCollection = collection(db, "InternshipListings"); // Adjust the collection name as needed
+      const internshipsCollection = collection(db, "InternshipListings");
       const internshipSnapshot = await getDocs(internshipsCollection);
       const internshipList = internshipSnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -158,7 +151,39 @@ const InternshipFetch = () => {
     };
 
     fetchInternships();
-  }, []); // Empty dependency array to run once on mount
+  }, []);
+
+  const handleResumeUpload = (e) => {
+    setResumeFile(e.target.files[0]);
+  };
+
+  const openModal = (internship) => {
+    setSelectedInternship(internship);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedInternship(null);
+    setResumeFile(null);
+  };
+
+  const toggleCompareMode = () => {
+    setIsCompareMode(!isCompareMode);
+    setSelectedForCompare([]);
+  };
+
+  const handleCompareSelect = (internship) => {
+    if (selectedForCompare.some((i) => i.id === internship.id)) {
+      setSelectedForCompare(selectedForCompare.filter((i) => i.id !== internship.id));
+    } else if (selectedForCompare.length < 2) {
+      setSelectedForCompare([...selectedForCompare, internship]);
+    }
+  };
+
+  const openCompareModal = () => {
+    setShowCompareModal(true);
+  };
 
   const applyToInternship = async () => {
     if (!resumeFile) {
@@ -166,7 +191,7 @@ const InternshipFetch = () => {
       return;
     }
 
-    const resumeLink = resumeFile.name; // Adjust this after uploading to storage
+    const resumeLink = resumeFile.name;
     const applicationData = {
       studentId,
       internshipId: selectedInternship.id,
@@ -178,23 +203,12 @@ const InternshipFetch = () => {
       const studentData = studentDoc.data();
       const resumeAnalysis = studentData.resume_analysis;
 
-      // Upload application data to Firestore
       const docRef = doc(collection(db, "AppliedToInternship"));
       await setDoc(docRef, applicationData);
 
       alert("Application submitted successfully!");
       setIsModalOpen(false);
-      setResumeFile(null); // Optionally clear the uploaded resume file
-    }
-  };
-
-  const handleSelectForCompare = (internship) => {
-    if (selectedForCompare.includes(internship)) {
-      setSelectedForCompare(
-        selectedForCompare.filter((item) => item !== internship)
-      );
-    } else if (selectedForCompare.length < 2) {
-      setSelectedForCompare([...selectedForCompare, internship]);
+      setResumeFile(null);
     }
   };
 
@@ -207,7 +221,6 @@ const InternshipFetch = () => {
     const formData = new FormData();
     formData.append("job1", selectedForCompare[0]["desc"]);
     formData.append("job2", selectedForCompare[1]["desc"]);
-    formData.append("job2", selectedForCompare[1]["desc"]);
 
     try {
       const response = await fetch("http://localhost:5000/compare_jobs", {
@@ -217,8 +230,8 @@ const InternshipFetch = () => {
 
       if (response.ok) {
         const result = await response.json();
-        setComparisonResult(result); // Save comparison result
-        setShowCompareModal(true); // Open comparison modal
+        setComparisonResult(result);
+        setShowCompareModal(true);
       } else {
         const errorData = await response.json();
         console.error("Error response:", errorData);
@@ -231,7 +244,6 @@ const InternshipFetch = () => {
   };
 
   const CompareModal = () => (
-<<<<<<< HEAD
     <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
       <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border-2 border-emerald-200">
         <h2 className="text-3xl font-bold text-emerald-800 mb-4">Compare Internships</h2>
@@ -262,42 +274,22 @@ const InternshipFetch = () => {
           )}
         </div>
         <div className="flex justify-end space-x-4">
-          <Button onClick={applyToInternship} disabled={isSubmitting}>
+          <Button onClick={submitComparison} disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Submit Comparison"}
           </Button>
           <Button
             onClick={() => setShowCompareModal(false)}
             className="bg-gray-200 text-gray-700 hover:bg-gray-300"
             disabled={isSubmitting}
-=======
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <h2 className="text-3xl font-bold text-indigo-900 mb-4">
-          Comparison Results
-        </h2>
-        {comparisonResult ? (
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Analysis:</h3>
-            <pre>{JSON.stringify(comparisonResult, null, 2)}</pre>
-          </div>
-        ) : (
-          <p>No results to display.</p>
-        )}
-        <div className="flex justify-end">
-          <button
-            className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500"
-            onClick={() => setShowCompareModal(false)}
->>>>>>> e1d7dbaee135a1ce1ae6fab2ab97728aeeecd755
           >
             Close
-          </button>
+          </Button>
         </div>
       </div>
     </div>
   );
 
   return (
-<<<<<<< HEAD
     <div className="p-6 bg-gradient-to-br from-green-50 via-white to-emerald-50 min-h-screen">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-6xl font-bold bg-gradient-to-r from-emerald-600 to-green-700 bg-clip-text text-transparent">
@@ -353,37 +345,8 @@ const InternshipFetch = () => {
               <strong className="text-emerald-800">Duration:</strong> {internship.duration}
             </p>
           </div>
-=======
-    <div>
-      <h1 className="text-2xl font-bold">Internship Listings</h1>
-      <ul>
-        {internships.map((internship) => (
-          <li key={internship.id} className="border p-4 my-2">
-            <h2 className="text-xl">{internship.title}</h2>
-            <p>{internship.description}</p>
-            <button
-              className={`mt-2 px-4 py-2 rounded hover:bg-indigo-500 ${
-                selectedForCompare.includes(internship)
-                  ? "bg-indigo-400"
-                  : "bg-indigo-600 text-white"
-              }`}
-              onClick={() => handleSelectForCompare(internship)}
-            >
-              {selectedForCompare.includes(internship)
-                ? "Deselect"
-                : "Select for Comparison"}
-            </button>
-          </li>
->>>>>>> e1d7dbaee135a1ce1ae6fab2ab97728aeeecd755
         ))}
-      </ul>
-
-      <button
-        className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500"
-        onClick={submitComparison}
-      >
-        Submit Comparison
-      </button>
+      </div>
 
       {isModalOpen && selectedInternship && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm">
@@ -391,7 +354,6 @@ const InternshipFetch = () => {
             <h2 className="text-3xl font-bold text-emerald-800 mb-4">
               {selectedInternship.title}
             </h2>
-<<<<<<< HEAD
             <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Company:</strong> {selectedInternship.companyName}</p>
             <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Description:</strong> {selectedInternship.desc}</p>
             <p className="mb-2 text-gray-700"><strong className="text-emerald-800">Duration:</strong> {selectedInternship.duration}</p>
@@ -417,26 +379,12 @@ const InternshipFetch = () => {
                 Close
               </Button>
             </div>
-=======
-            {/* Resume upload and other details */}
-            <input
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={(e) => setResumeFile(e.target.files[0])}
-            />
-            <button
-              className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500"
-              onClick={applyToInternship}
-            >
-              Submit Application
-            </button>
->>>>>>> e1d7dbaee135a1ce1ae6fab2ab97728aeeecd755
           </div>
         </div>
       )}
 
       {showCompareModal && <CompareModal />}
-      <SuccessModal data={null} onClose={() => setShowCompareModal(false)} />
+      <SuccessModal data={comparisonResult} onClose={() => setShowCompareModal(false)} />
     </div>
   );
 };
