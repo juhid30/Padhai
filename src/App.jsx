@@ -16,7 +16,7 @@ import TeacherAssignmentView from "./components/TeacherAssignmentView.jsx";
 import InternshipFetch from "./components/InternshipFetch.jsx";
 import Dashboard from "./components/Dashboard.jsx";
 import TeacherDashboard from "./components/TeacherDashboard.jsx";
-import Sidebar from "./components/Sidebar.jsx";
+import Sidebar from "./components/StudentSidebar.jsx";
 import { Roadmap } from "./components/Roadmap.jsx";
 import VideoPlayer from "./components/VideoPlayer.jsx";
 import BookLendingPage from "./components/BookLendingPage";

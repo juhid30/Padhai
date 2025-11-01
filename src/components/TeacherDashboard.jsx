@@ -1,6 +1,6 @@
 import React from "react";
 import TeacherSidebar from "./TeacherSidebar";
-import Sidebar from "./Sidebar";
+import Sidebar from "./StudentSidebar";
 
 const TeacherDashboard = () => {
   // Sample schedule data

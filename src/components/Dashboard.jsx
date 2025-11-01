@@ -17,6 +17,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import StudentSidebar from "./StudentSidebar";
+
 
 ChartJS.register(
   CategoryScale,
@@ -123,6 +125,7 @@ const Dashboard = () => {
 
   return (
     <div className="relative flex w-full min-h-screen overflow-x-hidden bg-gradient-to-br from-emerald-50 via-white to-green-100">
+      <StudentSidebar/>
       {/* Floating glow effects */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute w-72 h-72 bg-emerald-200/30 blur-3xl rounded-full -top-10 -left-20 animate-pulse"></div>

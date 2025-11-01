@@ -1,7 +1,7 @@
 import React from "react";
 import CodeEditor from "./CodeEditor/CodeEditor";
 import { Box } from "@chakra-ui/react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./StudentSidebar";
 
 // --- Consistent Color Palette for the Website Theme ---
 const customColors = {

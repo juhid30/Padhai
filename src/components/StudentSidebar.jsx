@@ -13,7 +13,7 @@ import {
   Sparkles
 } from "lucide-react";
 
-const Sidebar = () => {
+const StudentSidebar = () => {
   const navigate = useNavigate();
 
   const studentRoutes = [
@@ -84,4 +84,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default StudentSidebar;
